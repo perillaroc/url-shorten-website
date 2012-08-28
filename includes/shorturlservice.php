@@ -2,17 +2,12 @@
 /**
  *	shortUrlService.php
  */
- 
 require_once("HttpRequest.php");
 require_once("CurlIO.php");
 
-
 interface IShortUrlService{
-	
 	function getShortUrl($longurl);
-	
 	function expandShortUrl($shorturl);
-	
 }
 
 /**
@@ -325,7 +320,7 @@ class BitlyShortUrlService implements IShortUrlService{
 		$decodedResponse = json_decode($request->getResponseBody(),true);
 		if(!isset($decodedResponse["data"]["expand"][0]["long_url"])){
 			// 错误
-			return json_encode(array("error"=>"error"));
+			return json_encode(array("error"=>"some error"));
 		} else {
 			// 若无错误
 			return json_encode(array("shorturl"=>$decodedResponse["data"]["expand"][0]["short_url"],"longurl"=>$decodedResponse["data"]["expand"][0]["long_url"]));
@@ -360,23 +355,29 @@ function getServiceClassName($url){
 /**
  *	该处的filter过滤网址需要http部分，而google的短网址可以不用前缀。
  */
-if(isset($_GET['longurl']) && filter_var($_GET['longurl'],FILTER_VALIDATE_URL)){
-	// 生成短网址
-	$className = $_GET["service_provider"]."ShortUrlService";
-	$client = new $className();
-	echo $client->getShortUrl($_GET['longurl']);
-} elseif(isset($_GET['shorturl']) && filter_var($_GET['shorturl'],FILTER_VALIDATE_URL)){
-	// 解释短网址
-	// 需要分析网址，判断输入何种短网址，则构造那个api的对象
-	$className =  getServiceClassName($_GET['shorturl'])."ShortUrlService";
-	if($className){
-		$client = new $className();
-		echo $client->expandShortUrl($_GET['shorturl']);
-	} else {
-		echo json_encode(array( 'error' => '不支持解析该网址'));
-	}
-} else {
-	echo json_encode(array( 'error' => '请输入正确的网址参数'));
-}
+try{
+  if(isset($_GET['longurl']) && filter_var($_GET['longurl'],FILTER_VALIDATE_URL)){
+	  // 生成短网址
+	  $className = $_GET["service_provider"]."ShortUrlService";
+	  $client = new $className();
+	  echo $client->getShortUrl($_GET['longurl']);
+  } elseif(isset($_GET['shorturl']) && filter_var($_GET['shorturl'],FILTER_VALIDATE_URL)){
+	  // 解释短网址
+	  // 需要分析网址，判断输入何种短网址，则构造那个api的对象
+	  $className =  getServiceClassName($_GET['shorturl'])."ShortUrlService";
+	  if($className){
+		  $client = new $className();
+		  echo $client->expandShortUrl($_GET['shorturl']);
+	  } else {
+		  echo json_encode(array( 'error' => '不支持解析该网址'));
+	  }
+  } else {
+	  echo json_encode(array( 'error' => '请输入正确的网址参数'));
+  }
 
+}
+catch(IOException $ioex)
+{
+   echo json_encode(array( 'error' => '出现未知异常，请稍后再试', 'errcode' => '99'));
+}
 ?>

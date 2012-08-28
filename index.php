@@ -8,8 +8,7 @@ $currentService = array("百度(url.cn)","谷歌(goo.gl)","bitly(bit.ly)");
 $noticeString = implode("、",$currentService);
  
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="includes/css/jquery-ui/ui-lightness/jquery-ui-1.8.18.custom.css" />
@@ -39,7 +38,7 @@ flush();
     <div class="content accordion" id="shorten_url">
     	<h3><a href="#">生成短网址</a></h3>
         <div class="input_box">
-           <form action="includes/shorturlservice.php" method="get" enctype="application/x-www-form-urlencoded" name="shorten_form" id="shorten_form">
+           <form action="" method="get" enctype="application/x-www-form-urlencoded" name="shorten_form" id="shorten_form">
               <p>
               <input type="text" name="longurl" class="url_input" id="longurl" />
               <input type="button" name="getShortUrl" id="getShortUrl" value="生成短网址" />
@@ -49,8 +48,8 @@ flush();
               百度 
               <input type="radio" name="service_provider" value="Google" />
               谷歌 
-              <input type="radio" name="service_provider" value="Tencent" />
-              腾讯
+              <!--<input type="radio" name="service_provider" value="Tencent" />
+              腾讯 -->
               <input type="radio" name="service_provider" value="Bitly" />
               Bitly
               </p>
@@ -61,7 +60,7 @@ flush();
 	<div class="content accordion" id= "expand_url">
     	<h3><a href="#">解释短网址</a></h3>
         <div class="input_box">
-            <form action="includes/shorturlservice.php" method="get" enctype="application/x-www-form-urlencoded" name="expand_form" id="expand_form">
+            <form action="" method="get" enctype="application/x-www-form-urlencoded" name="expand_form" id="expand_form">
               <input type="text" name="shorturl" id="shorturl" class="url_input"/>
               <input type="button" name="expandShortUrl" id="expandShortUrl" value="解释短网址" />
             </form>
@@ -70,7 +69,7 @@ flush();
         </div>
     </div> <!-- content #expand_url -->
     <div class="content" id="infrom_dialog">
-    <div id="inform" title="提示"></div>
+      <div id="inform" title="提示"></div>
     </div> <!-- content #inform_dialog -->
     </div><!-- main -->
 <?php

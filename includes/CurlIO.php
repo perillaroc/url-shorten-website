@@ -88,11 +88,8 @@ class CurlIO
 			}
 		  }
 		}
-	
 		return array($responseHeaders, $responseBody);
   	}
-	
-	
 }
 /**
  *	google api 中有异常类，在curlIO中处理HTTP响应code，抛出相应的异常

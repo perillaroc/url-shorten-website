@@ -3,8 +3,6 @@
 
 $(document).ready(function(){
 	// 获取短网址
-	//$('input:radio[value=Bitly]').attr('disabled','true');
-	
 	$('.accordion').accordion({
 		collapsible: true
 	});
@@ -12,8 +10,7 @@ $(document).ready(function(){
 	$('.accordion:first').accordion("option",{
 		fillspace:true
 	});
-	
-	
+
 	$('input:button,input:submit').button();
 	
 	$('#getShortUrl').click(function(){
@@ -64,10 +61,6 @@ $(document).ready(function(){
 		});
 		return false;
 	});
-	
-	
-	
-	
 });
 
 $(document).ready(function(){

@@ -5,7 +5,6 @@
  */
  
 ?>
-
     <div id="footer">
     	<div class="content copyright">
         	<p>
@@ -17,8 +16,6 @@
             </p>
         </div>
     </div> <!-- footer -->
-
 </div>	<!-- wrapped -->
-
 </body>
 </html>
