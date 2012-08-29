@@ -20,6 +20,11 @@
 	font-size: small;
 	text-align: center;
 }
+
+.style-switcher{
+  text-align:center;
+}
+
 .notice{
 	width: 50%;
 	margin-left:25%;

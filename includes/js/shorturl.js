@@ -2,17 +2,15 @@
 // shorturl.js
 
 $(document).ready(function(){
-	// 获取短网址
 	$('.accordion').accordion({
 		collapsible: true
 	});
-	
 	$('.accordion:first').accordion("option",{
 		fillspace:true
 	});
-
 	$('input:button,input:submit').button();
 	
+	// 获取短网址
 	$('#getShortUrl').click(function(){
 		$longurl = $('#longurl').val();
 		if(!$longurl){
@@ -38,6 +36,7 @@ $(document).ready(function(){
 		return false;
 	});
 	
+	// 解释短网址
 	$('#expandShortUrl').click(function(){
 		$shorturl = $('#shorturl').val();
 		if(!$shorturl){
@@ -65,12 +64,12 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 	$('#inform').dialog({
-					autoOpen: false,
-					buttons: {
-						"确定": function() { 
-							$(this).dialog("close"); 
-							$('#inform').html("<p>网址不能为空，请输入网址。</p>");
-						}, 
-					}
+		autoOpen: false,
+		buttons: {
+			"确定": function() { 
+				$(this).dialog("close"); 
+				$('#inform').html("<p>网址不能为空，请输入网址。</p>");
+			}, 
+		}
 	});
 });

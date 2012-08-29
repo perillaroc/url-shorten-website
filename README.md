@@ -17,7 +17,6 @@ I'm going to invole more short url services in my website,such as Sina and Tecen
 History
 ---------------
 I worked on this small project in this May.After the first version released on the end of May,I'd forgotten this project untill I found my code for tencent short url api went wrong in mid-August.So it's time for me to continue this project.
-There are so many things I want to do now that I am hesitating all days.I'm too irresolute now.
 
 Remember:
 
